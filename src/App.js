@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import Main from './components/Main.jsx';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CategorySelectScreen from './components/CategorySelectScreen';
+import JobListPage from './category/JobListPage';
 
-export default function App() {
-  const [key, setKey] = useState(null);
-
-  useEffect(function() {
-    const inputKey = prompt("키 입력 ㄱ");
-    setKey(inputKey);
-  }, []);
-
-  if (key !== null) {
+function App() {
     return (
-      <Main inputKey={key}></Main>
-    )
-  }
+        <Router>
+            <Routes>
+                <Route path="/" element={<CategorySelectScreen />} />
+                <Route path="/jobList" element={<JobListPage />} />
+                
+                {/* <Route path="/category/:category" element={<Specific />} /> 카테고리별 페이지 */}
+            </Routes>
+        </Router>
+    );
 }
+
+export default App;
