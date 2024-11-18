@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
-import { JobList } from '../data/JobList';
-import JobListViewer from './JobListViewer';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function JobListScreen({idx, onClick}) {
-    const hello = useRoutes().props;
+const JobListPage = () => {
+    const { jobData } = useLocation().state;
+    const navigate = useNavigate();
 
-    console.log(hello);
+    function navigateToMainWithMain(jobName) {
+        navigate(`/main`, {
+            state: { jobData : jobData, jobName : jobName }
+        });
+    };
+    function navigateToCategorySelect() {
+        navigate('/');
+    };
     
     return (
-        <div onClick={onClick} style={{cursor: 'pointer'}}>
-            {
-                JobList.map(function(i) {
-                    return null;
-                })
-            }
+        <div>
+            <button onClick={function() {navigateToCategorySelect()}}>뒤로가기</button>
+            <h2>{jobData.name}</h2>
+            <div>
+                {jobData.list.map((job, idx) => (
+                    <p
+                        onClick={function() {navigateToMainWithMain(job)}} 
+                        key={idx}
+                    >
+                        {job}
+                    </p>
+                ))}
+            </div>
         </div>
     );
-}
+};
 
-export default JobListScreen;
+export default JobListPage;
