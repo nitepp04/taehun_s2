@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import { JobList } from '../data/JobList';
-import JobListViewer from './JobListViewer';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function JobListScreen({idx, onClick}) {
-    const hello = useRoutes().props;
+function JobListScreen({ onClick }) {
+  const location = useLocation();
+  const jobData = location.state;
 
-    console.log(hello);
-    
-    return (
-        <div onClick={onClick} style={{cursor: 'pointer'}}>
-            {
-                JobList.map(function(i) {
-                    return null;
-                })
-            }
-        </div>
-    );
+  return (
+    <div onClick={onClick} style={{ cursor: "pointer" }}>
+      {jobData.list.map(function (jobName) {
+        return <div key={jobName}>{jobName}</div>;
+      })}
+    </div>
+  );
 }
 
 export default JobListScreen;
