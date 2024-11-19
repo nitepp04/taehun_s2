@@ -9,17 +9,19 @@ function Main({ inputKey }) {
   const [imgUrl, setImgUrl] = useState('');
   
   const navigate = useNavigate();
-  const { jobData, jobName } = useLocation().state;
-  
+  const { jobData, jobName: rawJobName } = useLocation().state;
+
+  // 한글 주석 제거 처리
+  const jobName = rawJobName.replace(/\s*\([^)]*\)/g, '');
+
   const post_test_url = `http://127.0.0.1:1101/post/img?key=${inputKey}`;
-  const r_url = 'https://49y0g7b24k.execute-api.ap-northeast-1.amazonaws.com/clientToServer'
+  const r_url = 'https://49y0g7b24k.execute-api.ap-northeast-1.amazonaws.com/clientToServer';
 
   useEffect(() => {
     getWebcam((stream) => {
       videoRef.current.srcObject = stream; // 비디오 스트림 연결
     });
   }, []);
-  
 
   const getWebcam = (callback) => {
     const constraints = {
@@ -33,7 +35,7 @@ function Main({ inputKey }) {
 
   function navigateToJobListWithJobName() {
     navigate('/jobList', {
-      state : { jobData : jobData }
+      state: { jobData: jobData }
     });
   };
 
@@ -64,7 +66,6 @@ function Main({ inputKey }) {
       const url = URL.createObjectURL(blob);
       setImgUrl(url);
   
-      // 비디오 재생 상태 확인 후 일시 정지
       if (!video.paused) {
         video.pause();
       }
@@ -85,7 +86,6 @@ function Main({ inputKey }) {
         });
       }
   
-      // 업로드 후 재생 상태 확인
       if (video.paused) {
         video.play().catch((err) => console.error('비디오 재생 중 에러 발생:', err));
       }
@@ -94,12 +94,11 @@ function Main({ inputKey }) {
       setImgUrl('');
     }, 'image/jpeg');
   };
-  
-  
+
   // 비디오 화면과 캡처 버튼 표시
   return (
     <div style={{ position: "relative", zIndex: "100", width: "1024px", backgroundColor: "white" }}>
-      <button onClick={function() {navigateToJobListWithJobName()}}>뒤로가기</button>
+      <button onClick={function() { navigateToJobListWithJobName() }}>뒤로가기</button>
       <video
         id="videoCam"
         ref={videoRef}
@@ -112,7 +111,6 @@ function Main({ inputKey }) {
       />
       <canvas ref={canvasRef} width="1024" height="768" style={{ display: 'none' }}></canvas>
       
-      {/* 캡처 중일 때 이미지 표시 */}
       {isCapturing && (
         <img 
           src={imgUrl} 
@@ -124,12 +122,11 @@ function Main({ inputKey }) {
             width: '1024px',
             height: '768px',
             objectFit: 'cover',
-            zIndex: 99 // 비디오보다 위에 표시
+            zIndex: 99
           }} 
         />
       )}
       
-      {/* 캡처 버튼 */}
       <div
         onClick={screenshot}
         style={{
@@ -156,7 +153,7 @@ function Main({ inputKey }) {
         }}></div>
       </div>
       
-      <p>{jobName}</p>
+      <p>{rawJobName}</p>
     </div>
   );
 }
