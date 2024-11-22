@@ -45,31 +45,47 @@ const JobListPage = () => {
 
 const styles = {
   container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
+    backgroundColor: "#f8f9fa",
+    minHeight: "100vh", // 화면 전체 채우기
   },
   title: {
-    fontSize: "24px",
+    fontSize: "28px",
     fontWeight: "bold",
     marginBottom: "20px",
     textAlign: "center",
+    color: "#333",
   },
   list: {
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: "10px",
-    marginTop: "20px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+    width: "80%", // 적당한 리스트 너비
+    maxWidth: "600px", // 최대 리스트 너비
   },
   listItem: {
-    padding: "10px",
+    padding: "15px",
     border: "1px solid #ddd",
-    borderRadius: "5px",
-    backgroundColor: "#f9f9f9",
+    borderRadius: "8px",
+    backgroundColor: "#ffffff",
     cursor: "pointer",
     textAlign: "center",
-    transition: "background-color 0.3s",
+    fontSize: "18px",
+    color: "#555",
+    transition: "background-color 0.3s ease, transform 0.2s",
+    boxShadow: "0 3px 6px rgba(0, 0, 0, 0.1)",
+  },
+  listItemHover: {
+    backgroundColor: "#007BFF",
+    color: "#fff",
+    transform: "translateY(-3px)",
   },
   backButton: {
+    alignSelf: "flex-start", // 버튼을 왼쪽 정렬
     marginBottom: "20px",
     padding: "10px 20px",
     fontSize: "16px",
@@ -78,6 +94,7 @@ const styles = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
+    transition: "background-color 0.3s ease",
   },
 };
 
