@@ -6,7 +6,7 @@ const CategorySelectScreen = () => {
   const navigate = useNavigate();
 
   function navigateToJobListWithJobData(jobData) {
-    navigate(`/jobList`, {
+    navigate(`/jobSelect`, {
       state: { jobData: jobData },
     });
   }

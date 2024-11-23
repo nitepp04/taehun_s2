@@ -4,14 +4,14 @@ export const styles = {
     zIndex: 100,
     width: "100%",
     height: "100vh",
-    backgroundColor: "#f0f2f5",  // 밝은 배경 색상
+    backgroundColor: "#f0f2f5", // 밝은 배경 색상
     padding: "20px",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",  // 팝업이 뜨더라도 기존 요소 밀리지 않음
+    overflow: "hidden", // 팝업이 뜨더라도 기존 요소 밀리지 않음
     fontFamily: "'Arial', sans-serif", // 폰트 설정
   },
   backButton: {
@@ -134,21 +134,6 @@ export const styles = {
     color: "white",
     transition: "background-color 0.3s ease",
   },
-  retakeButtonContainer: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "center",
-  },
-  retakeButton: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    border: "none",
-    cursor: "pointer",
-    backgroundColor: "#f44336",
-    color: "white",
-    transition: "background-color 0.3s ease",
-  },
   uploadButtonContainer: {
     marginTop: "20px",
     display: "flex",
@@ -164,7 +149,6 @@ export const styles = {
     color: "white",
     transition: "background-color 0.3s ease",
   },
-    
 };
 
 export default styles;

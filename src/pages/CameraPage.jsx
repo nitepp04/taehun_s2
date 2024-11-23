@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "../data/styles";
+import styles from "../styles/styles";
 
 function makeUniqueID() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
@@ -50,7 +50,7 @@ function Main({ inputKey }) {
   };
 
   const navigateToJobListWithJobName = () => {
-    navigate("/jobList", { state: { jobData: jobData } });
+    navigate("/jobSelect", { state: { jobData: jobData } });
   };
 
   const screenshot = () => {
@@ -65,59 +65,54 @@ function Main({ inputKey }) {
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     context.restore();
 
-    canvas.toBlob(
-      (blob) => {
-        if (!blob) {
-          console.error("캡처 블롭 생성 실패");
-          setIsCapturing(false);
-          return;
-        }
-
-        const url = URL.createObjectURL(blob);
-        setImgUrl(url);
-        setCaptured(true); // 사진 촬영 후 상태 변경
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        console.error("캡처 블롭 생성 실패");
         setIsCapturing(false);
-      },
-      "image/jpeg"
-    );
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      setImgUrl(url);
+      setCaptured(true); // 사진 촬영 후 상태 변경
+      setIsCapturing(false);
+    }, "image/jpeg");
   };
 
   const handleUpload = () => {
     const canvas = canvasRef.current;
-    canvas.toBlob(
-      (blob) => {
-        if (!blob) {
-          console.error("캡처 블롭 생성 실패");
-          setIsCapturing(false);
-          return;
-        }
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        console.error("캡처 블롭 생성 실패");
+        setIsCapturing(false);
+        return;
+      }
 
-        const fileName = formatFileName(jobName);
-        const file = new File([blob], fileName, { type: "image/jpeg" });
+      const fileName = formatFileName(jobName);
+      const file = new File([blob], fileName, { type: "image/jpeg" });
 
-        const formData = new FormData();
-        formData.append("img", file);
-        formData.append("key", inputKey);
-        formData.append("jobName", jobName);
+      const formData = new FormData();
+      formData.append("img", file);
+      formData.append("key", inputKey);
+      formData.append("jobName", jobName);
 
-        axios
-          .post(post_test_url, formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          })
-          .then((res) => {
-            console.log("업로드 성공:", res.data);
-            alert("이미지가 성공적으로 업로드되었습니다!");
-          })
-          .catch((err) => {
-            console.error("업로드 중 에러 발생:", err);
-            alert("업로드에 실패했습니다. 다시 시도해주세요.");
-          });
+      axios
+        .post(post_test_url, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+          navigate("/"); // 사진 업로드 성공 후 정책 확인 페이지(첫 화면)로 돌아가기
+          console.log("업로드 성공:", res.data);
+          alert("이미지가 성공적으로 업로드되었습니다!");
+        })
+        .catch((err) => {
+          console.error("업로드 중 에러 발생:", err);
+          alert("업로드에 실패했습니다. 다시 시도해주세요.");
+        });
 
-        setCaptured(false);
-        setImgUrl("");
-      },
-      "image/jpeg"
-    );
+      setCaptured(false);
+      setImgUrl("");
+    }, "image/jpeg");
   };
 
   const retakePhoto = () => {

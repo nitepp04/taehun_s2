@@ -1,27 +1,25 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import CategorySelectScreen from './components/CategorySelectScreen';
-import JobListPage from './category/JobListPage';
-import Main from './components/Main';
-import Policy from './components/Policy';
-import Home from './components/Home';
+import React, { useEffect } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import CategorySelectPage from "./pages/CategorySelectPage";
+import JobSelectPage from "./pages/JobSelectPage";
+import CameraPage from "./pages/CameraPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
-    const navigate = useNavigate();
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
 
-    useEffect(function() {
-        navigate('/home');
-    }, [navigate]);
-    
-    return (
-            <Routes>
-                <Route path="/" element={<CategorySelectScreen />} />
-                <Route path="/categoryselect" element={<CategorySelectScreen />} />
-                <Route path="/jobList" element={<JobListPage />} />
-                <Route path='/main' element={<Main />} /> 
-                <Route path='/home' element={<Home />} />
-            </Routes>
-    );
+      <Route path="/categoryselect" element={<CategorySelectPage />} />
+      <Route path="/jobSelect" element={<JobSelectPage />} />
+
+      {/* 기존의 main 컴포넌트 이름과 라우팅을 컴포넌트 기능에 맞춰 'CameraPage'로 변경 */}
+      <Route path="/camera" element={<CameraPage />} />
+
+      {/* 404 화면 처리 */}
+      <Route path="*" element={<Navigate to="/policy" />} />
+    </Routes>
+  );
 }
 
 export default App;

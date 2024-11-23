@@ -10,16 +10,16 @@ const JobListPage = () => {
     return <p>잘못된 접근입니다. 다시 시도해주세요.</p>;
   }
 
-  // 특정 직업으로 이동하는 함수
-  const navigateToMainWithMain = (jobName) => {
-    navigate(`/main`, {
+  // 사진찍기 페이지로 이동
+  const navigateToCameraScreen = (jobName) => {
+    navigate(`/camera`, {
       state: { jobData: jobData, jobName: jobName },
     });
   };
 
-  // 카테고리 선택 페이지로 돌아가는 함수
+  // 이전 화면(카테고리 선택)으로 돌아가기
   const navigateToCategorySelect = () => {
-    navigate("/");
+    navigate("/categoryselect");
   };
 
   return (
@@ -33,7 +33,7 @@ const JobListPage = () => {
           <p
             key={idx}
             style={styles.listItem}
-            onClick={() => navigateToMainWithMain(job)}
+            onClick={() => navigateToCameraScreen(job)}
           >
             {job}
           </p>
