@@ -82,6 +82,34 @@ function Main({ inputKey }) {
     }, "image/jpeg");
   };
 
+  // 전시 화면 next.js로 이미지 업로드 성공시 전송
+  function notifySuccessToNextJs() {
+    const apiUrl = process.env.REACT_APP_NOTIFY_SUCCESS_API_URL;
+
+    axios
+      .post(apiUrl, { status: "success" })
+      .then((response) => {
+        console.log("Next.js notified successfully:", response.data);
+        alert("Next.js 서버에 신호를 보냈습니다!");
+      })
+      .catch((error) => {
+        if (error.response) {
+          // 서버 응답이 있지만 상태 코드가 2xx가 아닐 경우
+          console.error(
+            `Server responded with status: ${error.response.status}`
+          );
+          console.error("Response data:", error.response.data);
+        } else if (error.request) {
+          // 요청이 전송되었지만 응답을 받지 못한 경우
+          console.error("No response received from the server:", error.request);
+        } else {
+          // 요청 설정 중 발생한 오류
+          console.error("Error setting up the request:", error.message);
+        }
+        alert("Next.js 서버에 신호를 보내는 데 실패했습니다.");
+      });
+  }
+
   const handleUpload = () => {
     const canvas = canvasRef.current;
     canvas.toBlob((blob) => {
@@ -104,6 +132,8 @@ function Main({ inputKey }) {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
+          notifySuccessToNextJs();
+
           navigate("/"); // 사진 업로드 성공 후 정책 확인 페이지(첫 화면)로 돌아가기
           console.log("업로드 성공:", res.data);
           alert("이미지가 성공적으로 업로드되었습니다!");
