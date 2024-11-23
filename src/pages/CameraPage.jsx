@@ -23,7 +23,10 @@ function Main({ inputKey }) {
   const { jobData, jobName: rawJobName } = useLocation().state;
 
   const jobName = rawJobName.replace(/\s*\([^)]*\)/g, "");
-  const post_test_url = `http://127.0.0.1:1101/post/img?key=${inputKey}`;
+
+  const uploadUrl = process.env.REACT_APP_API_URL; // 환경 변수 가져오기
+
+  // const post_test_url = `http://127.0.0.1:1101/post/img?key=${inputKey}`;
 
   useEffect(() => {
     getWebcam((stream) => {
@@ -97,7 +100,7 @@ function Main({ inputKey }) {
       formData.append("jobName", jobName);
 
       axios
-        .post(post_test_url, formData, {
+        .post(uploadUrl, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
