@@ -127,6 +127,8 @@ function Main({ inputKey }) {
       formData.append("key", inputKey);
       formData.append("jobName", jobName);
 
+      console.log(Array.from(formData.entries()));
+
       axios
         .post(uploadUrl, formData, {
           headers: { "Content-Type": "multipart/form-data" },
