@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import CategorySelectPage from "./pages/CategorySelectPage";
 import JobSelectPage from "./pages/JobSelectPage";
@@ -14,8 +14,10 @@ function App() {
       <Route path="/categoryselect" element={<CategorySelectPage />} />
       <Route path="/jobSelect" element={<JobSelectPage />} />
       <Route path="/camera" element={<CameraPage />} />
-      <Route path="policy" element={<Policy />} />
-      <Route path="*" element={<Navigate to="/policy" />} />
+
+      {/* 404 화면 처리 */}
+      <Route path="*" element={<Policy />} />
+      <Route path="*" element={<HomePage />} />
     </Routes>
   );
 }
