@@ -1,154 +1,149 @@
 export const styles = {
+  // Global container styles
   container: {
     position: "relative",
-    zIndex: 100,
     width: "100%",
-    height: "100vh",
-    backgroundColor: "#f0f2f5", // 밝은 배경 색상
+    minHeight: "100vh",
+    backgroundColor: "#151739", // 짙은 푸른색 배경
     padding: "20px",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden", // 팝업이 뜨더라도 기존 요소 밀리지 않음
-    fontFamily: "'Arial', sans-serif", // 폰트 설정
+    color: "#ffffff",
+    fontFamily: "'Poppins', 'Arial', sans-serif",
   },
+
+  // Back button styles
   backButton: {
     position: "absolute",
-    top: "10px",
-    left: "10px",
-    zIndex: 102,
-    fontSize: "16px",
+    top: "20px",
+    left: "20px",
     padding: "10px 20px",
-    backgroundColor: "#ffffff",
-    border: "2px solid #007bff",
-    borderRadius: "25px",
-    color: "#007bff",
-    fontWeight: "bold",
+    fontSize: "14px",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    color: "#ffffff",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    borderRadius: "8px",
     cursor: "pointer",
     transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+    },
   },
-  video: {
-    width: "90%",
-    height: "60%",
-    transform: "scaleX(-1)",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)",
-  },
-  capturedImage: {
-    width: "90%",
-    height: "60%",
-    objectFit: "cover",
-    borderRadius: "12px",
-    marginTop: "20px",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-  },
-  captureButton: {
-    position: "absolute",
-    zIndex: 101,
-    bottom: "10%",
-    cursor: "pointer",
-    backgroundColor: "#ffffff",
-    width: "80px",
-    height: "80px",
-    borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.1)",
-    transition: "all 0.3s ease",
-  },
-  innerCircle: {
-    width: "60px",
-    height: "60px",
-    border: "3px solid #007bff",
-    borderRadius: "50%",
-  },
-  popup: {
-    position: "fixed", // 고정 위치로 팝업이 화면 위에 나타남
-    top: "20%",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "80%",
-    backgroundColor: "#ffffff",
-    borderRadius: "15px",
-    padding: "30px",
-    zIndex: 200, // 다른 요소 위에 오도록 설정
-    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.2)",
+
+  // Title styles
+  title: {
+    fontSize: "2rem",
+    color: "#ffffff",
     textAlign: "center",
-    fontSize: "18px",
-    color: "#333",
-    transition: "all 0.3s ease",
+    marginBottom: "2rem",
   },
-  popupImage: {
-    width: "100%",
+
+  // Policy container styles
+  policy_explain_container: {
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "20px",
+    padding: "30px",
+    margin: "20px",
+    maxWidth: "800px",
+    width: "90%",
+    color: "#ffffff",
+    boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+  },
+
+  // PolicyBox content styles
+  policyBox: {
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    padding: "20px",
     borderRadius: "15px",
-    marginBottom: "20px",
-    border: "5px solid #007bff",
-  },
-  buttonContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-  },
-  popupButton: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    border: "none",
-    cursor: "pointer",
-    backgroundColor: "#007BFF",
-    color: "white",
-    transition: "background-color 0.3s ease",
-  },
-  popupButtonRetake: {
-    backgroundColor: "#f44336",
-  },
-  uploadButtonContainer: {
     marginTop: "20px",
+    maxHeight: "500px",
+    overflowY: "auto",
+    "& h5": {
+      marginBottom: "0px",
+      fontSize: "1.2rem", // h5의 fontSize 지정
+      fontWeight: "600",
+    },
+    "& h6": {
+      marginTop: "0px",
+      fontSize: "1rem", // h6의 fontSize 지정
+      fontWeight: "400",
+    },
+    "&::-webkit-scrollbar": {
+      width: "8px",
+    },
+    "&::-webkit-scrollbar-track": {
+      background: "rgba(255, 255, 255, 0.1)",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "rgba(255, 255, 255, 0.3)",
+      borderRadius: "4px",
+    },
+  },
+
+  // Action buttons container
+  actionButtonsContainer: {
     display: "flex",
-    justifyContent: "center",
+    alignItems: "center",
+    gap: "1rem",
+    marginBottom: "2rem",
   },
-  uploadButton: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    border: "none",
-    cursor: "pointer",
-    backgroundColor: "#007BFF",
-    color: "white",
-    transition: "background-color 0.3s ease",
-  },
-  retakeButtonContainer: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "center",
-  },
+
+  // Button for retake and upload
   retakeButton: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "5px",
+    backgroundColor: "#ff5722",
+    color: "white",
+    padding: "12px 24px",
+    borderRadius: "8px",
     border: "none",
     cursor: "pointer",
-    backgroundColor: "#f44336",
-    color: "white",
-    transition: "background-color 0.3s ease",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "#f4511e",
+    },
   },
-  uploadButtonContainer: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "center",
-  },
+
   uploadButton: {
-    padding: "12px 30px",
-    fontSize: "16px",
-    borderRadius: "5px",
+    backgroundColor: "#2196f3",
+    color: "white",
+    padding: "12px 24px",
+    borderRadius: "8px",
     border: "none",
     cursor: "pointer",
-    backgroundColor: "#007BFF",
-    color: "white",
-    transition: "background-color 0.3s ease",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "#1976d2",
+    },
   },
+
+  // Checkbox styles
+  checkbox: {
+    width: "20px",
+    height: "20px",
+    cursor: "pointer",
+  },
+
+  // Agree button styles
+  agreeButton: {
+    width: "100%",
+    padding: "1rem",
+    fontSize: "1.1rem",
+    backgroundColor: "#000000",
+    color: "white",
+    border: "none",
+    borderRadius: "10px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    "&:disabled": {
+      backgroundColor: "#a9a9a9",
+      cursor: "not-allowed",
+    },
+  },
+
+  
 };
 
 export default styles;

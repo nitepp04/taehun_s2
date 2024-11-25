@@ -28,18 +28,19 @@ function Main({ inputKey }) {
   useEffect(() => {
     getWebcam((stream) => {
       videoRef.current.srcObject = stream;
-
-      // 비디오 메타데이터 로드 후 캔버스 크기 동기화
+      videoRef.current.style.transform = "scaleX(-1)";  // 좌우 반전 추가
+  
       videoRef.current.onloadedmetadata = () => {
         const videoWidth = videoRef.current.videoWidth;
         const videoHeight = videoRef.current.videoHeight;
-
+  
         const canvas = canvasRef.current;
         canvas.width = videoWidth;
         canvas.height = videoHeight;
       };
     });
   }, []);
+  
 
   const getWebcam = (callback) => {
     const constraints = { video: true, audio: false };
@@ -60,8 +61,8 @@ function Main({ inputKey }) {
     const context = canvas.getContext("2d");
 
     context.save();
-    context.scale(-1, 1); // 비디오 반전을 캔버스에 반영
-    context.translate(-canvas.width, 0); // 반전된 위치 조정
+    context.scale(-1, 1);
+    context.translate(-canvas.width, 0);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     context.restore();
 
@@ -74,7 +75,7 @@ function Main({ inputKey }) {
 
       const url = URL.createObjectURL(blob);
       setImgUrl(url);
-      setCaptured(true); // 사진 촬영 후 상태 변경
+      setCaptured(true);
       setIsCapturing(false);
     }, "image/jpeg");
   };
@@ -101,7 +102,7 @@ function Main({ inputKey }) {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res) => {
-          navigate("/"); // 사진 업로드 성공 후 정책 확인 페이지(첫 화면)로 돌아가기
+          navigate("/");
           console.log("업로드 성공:", res.data);
           alert("이미지가 성공적으로 업로드되었습니다!");
         })
@@ -129,11 +130,9 @@ function Main({ inputKey }) {
       <button onClick={navigateToJobListWithJobName} style={styles.backButton}>
         뒤로가기
       </button>
-      {/* 사진 촬영 전: 비디오 화면 */}
       {!captured ? (
         <video ref={videoRef} autoPlay style={styles.video} />
       ) : (
-        // 사진 촬영 후: 캡처된 이미지
         <img src={imgUrl} alt="Captured" style={styles.capturedImage} />
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
@@ -159,7 +158,31 @@ function Main({ inputKey }) {
           </button>
         </div>
       )}
-
+      <div
+        onClick={function() {screenshot()}}
+        style={{
+          position: "absolute",
+          zIndex: "101",
+          bottom: '5%',
+          left: "46%",
+          cursor: "pointer",
+          backgroundColor: "white",
+          width: "70px",
+          height: "70px",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{
+          textAlign: "center",
+          width: "60px",
+          height: "60px",
+          border: "2px solid",
+          borderRadius: "50%",
+        }}></div>
+      </div>
       <p>{rawJobName}</p>
     </div>
   );
