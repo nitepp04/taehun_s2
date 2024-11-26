@@ -24,7 +24,8 @@ function Main({ inputKey }) {
 
   const jobName = rawJobName.replace(/\s*\([^)]*\)/g, "");
 
-  const uploadUrl = process.env.REACT_APP_API_URL; // 환경 변수 가져오기
+  const uploadUrl = "https://49y0g7b24k.execute-api.ap-northeast-1.amazonaws.com/clientToServer"; // 환경 변수 가져오기
+  // const uploadUrl = process.env.REACT_APP_API_URL; // 환경 변수 가져오기
 
   // const post_test_url = `http://127.0.0.1:1101/post/img?key=${inputKey}`;
 
