@@ -11,7 +11,7 @@ function Policy() {
       <button onClick={() => navigate('/')} style={styles.backButton}>
         뒤로가기
       </button>
-
+      {/*어쩔*/}
       <div style={styles.policy_explain_container}>
         <h1 style={styles.title}>이용약관</h1>
 
