@@ -14,7 +14,7 @@ function Home() {
         gap: '2rem'
       }}>
         <h1 style={{
-          fontSize: '10rem',
+          fontSize: '5rem',
           fontWeight: 'bold',
           color: '#ffffff',
           textAlign: 'center',
@@ -26,7 +26,7 @@ function Home() {
         <button
           style={{
             padding: '15px 40px',
-            fontSize: '4rem',
+            fontSize: '2rem',
             backgroundColor: '#4caf50',
             color: 'white',
             border: 'none',
