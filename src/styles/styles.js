@@ -240,7 +240,7 @@ const styles = {
   },
 
   explain: {
-    fontSize: "2.4rem", // 글씨 크기를 2배로 설정
+    fontSize: "1rem", // 글씨 크기를 2배로 설정
     lineHeight: "2.4", // 줄 간격도 조정
   },
 
