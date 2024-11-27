@@ -1,10 +1,10 @@
-export const styles = {
-  // Global container styles
+const styles = {
+  /* Global container styles */
   container: {
     position: "relative",
     width: "100%",
     minHeight: "100vh",
-    backgroundColor: "#151739", // 짙은 푸른색 배경
+    backgroundColor: "#151739", // Dark blue background
     padding: "20px",
     boxSizing: "border-box",
     display: "flex",
@@ -15,7 +15,7 @@ export const styles = {
     fontFamily: "'Poppins', 'Arial', sans-serif",
   },
 
-  // Back button styles
+  /* Back button styles */
   backButton: {
     position: "absolute",
     top: "20px",
@@ -28,12 +28,13 @@ export const styles = {
     borderRadius: "8px",
     cursor: "pointer",
     transition: "all 0.3s ease",
-    "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.2)",
-    },
   },
 
-  // Title styles
+  backButtonHover: {
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+  },
+
+  /* Title styles */
   title: {
     fontSize: "2rem",
     color: "#ffffff",
@@ -41,8 +42,8 @@ export const styles = {
     marginBottom: "2rem",
   },
 
-  // Policy container styles
-  policy_explain_container: {
+  /* Policy container styles */
+  policyExplainContainer: {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     backdropFilter: "blur(10px)",
     borderRadius: "20px",
@@ -54,7 +55,7 @@ export const styles = {
     boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
   },
 
-  // PolicyBox content styles
+  /* PolicyBox content styles */
   policyBox: {
     backgroundColor: "rgba(255, 255, 255, 0.05)",
     padding: "20px",
@@ -62,29 +63,35 @@ export const styles = {
     marginTop: "20px",
     maxHeight: "500px",
     overflowY: "auto",
-    "& h5": {
-      marginBottom: "0px",
-      fontSize: "1.2rem", // h5의 fontSize 지정
-      fontWeight: "600",
-    },
-    "& h6": {
-      marginTop: "0px",
-      fontSize: "1rem", // h6의 fontSize 지정
-      fontWeight: "400",
-    },
-    "&::-webkit-scrollbar": {
-      width: "8px",
-    },
-    "&::-webkit-scrollbar-track": {
-      background: "rgba(255, 255, 255, 0.1)",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: "rgba(255, 255, 255, 0.3)",
-      borderRadius: "4px",
-    },
   },
 
-  // Action buttons container
+  policyBoxHeader: {
+    marginBottom: "0px",
+    fontSize: "1.2rem",
+    fontWeight: "600",
+  },
+
+  policyBoxSubHeader: {
+    marginTop: "0px",
+    fontSize: "1rem",
+    fontWeight: "400",
+  },
+
+  /* Scrollbar styles */
+  policyBoxScrollbar: {
+    width: "8px",
+  },
+
+  policyBoxScrollbarTrack: {
+    background: "rgba(255, 255, 255, 0.1)",
+  },
+
+  policyBoxScrollbarThumb: {
+    background: "rgba(255, 255, 255, 0.3)",
+    borderRadius: "4px",
+  },
+
+  /* Action buttons container */
   actionButtonsContainer: {
     display: "flex",
     alignItems: "center",
@@ -92,7 +99,7 @@ export const styles = {
     marginBottom: "2rem",
   },
 
-  // Button for retake and upload
+  /* Button for retake and upload */
   retakeButton: {
     backgroundColor: "#ff5722",
     color: "white",
@@ -101,9 +108,10 @@ export const styles = {
     border: "none",
     cursor: "pointer",
     transition: "all 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#f4511e",
-    },
+  },
+
+  retakeButtonHover: {
+    backgroundColor: "#f4511e",
   },
 
   uploadButton: {
@@ -114,19 +122,20 @@ export const styles = {
     border: "none",
     cursor: "pointer",
     transition: "all 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#1976d2",
-    },
   },
 
-  // Checkbox styles
+  uploadButtonHover: {
+    backgroundColor: "#1976d2",
+  },
+
+  /* Checkbox styles */
   checkbox: {
     width: "20px",
     height: "20px",
     cursor: "pointer",
   },
 
-  // Agree button styles
+  /* Agree button styles */
   agreeButton: {
     width: "100%",
     padding: "1rem",
@@ -137,9 +146,39 @@ export const styles = {
     borderRadius: "10px",
     cursor: "pointer",
     transition: "all 0.3s ease",
-    "&:disabled": {
-      backgroundColor: "#a9a9a9",
-      cursor: "not-allowed",
+  },
+
+  agreeButtonDisabled: {
+    backgroundColor: "#a9a9a9",
+    cursor: "not-allowed",
+  },
+
+  /* Media queries for different screen resolutions */
+  "@media (max-width: 2960px) and (max-height: 1848px)": {
+    container: {
+      padding: "15px",
+      fontSize: "1rem",
+    },
+    policyExplainContainer: {
+      maxWidth: "750px",
+      padding: "25px",
+    },
+    policyBox: {
+      maxHeight: "450px",
+    },
+  },
+
+  "@media (max-width: 2560px) and (max-height: 1600px)": {
+    container: {
+      padding: "10px",
+      fontSize: "0.9rem",
+    },
+    policyExplainContainer: {
+      maxWidth: "700px",
+      padding: "20px",
+    },
+    policyBox: {
+      maxHeight: "400px",
     },
   },
 

@@ -1,12 +1,12 @@
 import { QRCodeCanvas } from "qrcode.react";
 
 function QRCode() {
-    const uuid = "uuid";
+    const fileName = "fileName";
 
     return (
         <div>
             <QRCodeCanvas
-                value={`https://www.naver.com?uuid=${uuid}?expiredtime=${Date.now() + (30 * 60 * 1000)}}`}
+                value={`localhost:3000=${fileName}}`}
             />
         </div>
     )

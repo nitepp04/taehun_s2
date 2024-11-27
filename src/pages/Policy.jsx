@@ -107,7 +107,10 @@ function Policy() {
             onChange={() => setAgree(!agree)}
             style={styles.checkbox}
           />
-          이용약관에 동의합니다
+          <strong>
+            
+            이용약관에 동의합니다
+            </strong>
         </label>
         <div>
           <button

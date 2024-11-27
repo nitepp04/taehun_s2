@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Route, Routes, Navigate } from "react-router-dom";
 import CategorySelectPage from "./pages/CategorySelectPage";
 import JobSelectPage from "./pages/JobSelectPage";
@@ -8,8 +9,10 @@ import Policy from "./pages/Policy";
 import QRCode from "./components/QRCode";
 
 function App() {
-  return (
-    // <QRCode></QRCode>
+  // 2960x1848
+  // 2560x1600  
+    return (
+      // <QRCode></QRCode>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/categoryselect" element={<CategorySelectPage />} />

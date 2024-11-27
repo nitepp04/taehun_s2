@@ -1,22 +1,188 @@
-.page {
-  position: absolute; /* 필수 */
-  width: 100vw;
-  height: 100vh;
+/* Global container styles */
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #151739; /* Dark blue background */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Poppins', 'Arial', sans-serif;
 }
 
-.page-transition-enter {
-  z-index: 1;
-  transform: translateX(100%);
+/* Back button styles */
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.page-transition-enter-active {
-  transform: translateX(0);
-  transition: transform 300ms;
+
+.backButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.page-transition-exit {
-  z-index: 0;
-  transform: translateX(0);
+
+/* Title styles */
+.title {
+  font-size: 2rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
 }
-.page-transition-exit-active {
-  transform: translateX(-100%);
-  transition: transform 300ms;
+
+/* Policy container styles */
+.policyExplainContainer {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+  max-width: 800px;
+  width: 90%;
+  color: #ffffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* PolicyBox content styles */
+.policyBox {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.policyBox h5 {
+  margin-bottom: 0px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.policyBox h6 {
+  margin-top: 0px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.policyBox::-webkit-scrollbar {
+  width: 8px;
+}
+
+.policyBox::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.policyBox::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* Action buttons container */
+.actionButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Button for retake and upload */
+.retakeButton {
+  background-color: #ff5722;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retakeButton:hover {
+  background-color: #f4511e;
+}
+
+.uploadButton {
+  background-color: #2196f3;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.uploadButton:hover {
+  background-color: #1976d2;
+}
+
+/* Checkbox styles */
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Agree button styles */
+.agreeButton {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.agreeButton:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+/* Media queries for different screen resolutions */
+
+/* For screens up to 2960x1848 resolution */
+@media (max-width: 2960px) and (max-height: 1848px) {
+  .container {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .policyExplainContainer {
+    max-width: 750px;
+    padding: 25px;
+  }
+
+  .policyBox {
+    max-height: 450px;
+  }
+}
+
+/* For screens up to 2560x1600 resolution */
+@media (max-width: 2560px) and (max-height: 1600px) {
+  .container {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .policyExplainContainer {
+    max-width: 700px;
+    padding: 20px;
+  }
+
+  .policyBox {
+    max-height: 400px;
+  }
 }

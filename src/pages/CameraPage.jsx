@@ -24,27 +24,23 @@ function Main({ inputKey }) {
 
   const jobName = rawJobName.replace(/\s*\([^)]*\)/g, "");
 
-  const uploadUrl = "https://49y0g7b24k.execute-api.ap-northeast-1.amazonaws.com/clientToServer"; // 환경 변수 가져오기
-  // const uploadUrl = process.env.REACT_APP_API_URL; // 환경 변수 가져오기
-
-  // const post_test_url = `http://127.0.0.1:1101/post/img?key=${inputKey}`;
+  const uploadUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getWebcam((stream) => {
       videoRef.current.srcObject = stream;
       videoRef.current.style.transform = "scaleX(-1)";  // 좌우 반전 추가
-  
+
       videoRef.current.onloadedmetadata = () => {
         const videoWidth = videoRef.current.videoWidth;
         const videoHeight = videoRef.current.videoHeight;
-  
+
         const canvas = canvasRef.current;
         canvas.width = videoWidth;
         canvas.height = videoHeight;
       };
     });
   }, []);
-  
 
   const getWebcam = (callback) => {
     const constraints = { video: true, audio: false };
@@ -84,7 +80,6 @@ function Main({ inputKey }) {
     }, "image/jpeg");
   };
 
-  // 전시 화면 next.js로 이미지 업로드 성공시 전송
   function notifySuccessToNextJs() {
     const apiUrl = process.env.REACT_APP_NOTIFY_SUCCESS_API_URL;
 
@@ -92,28 +87,25 @@ function Main({ inputKey }) {
       .post(apiUrl, { status: "success" })
       .then((response) => {
         console.log("Next.js notified successfully:", response.data);
-        alert("Next.js 서버에 신호를 보냈습니다!");
+        // alert("Next.js 서버에 신호를 보냈습니다!");
       })
       .catch((error) => {
         if (error.response) {
-          // 서버 응답이 있지만 상태 코드가 2xx가 아닐 경우
-          console.error(
-            `Server responded with status: ${error.response.status}`
-          );
+          console.error(`Server responded with status: ${error.response.status}`);
           console.error("Response data:", error.response.data);
         } else if (error.request) {
-          // 요청이 전송되었지만 응답을 받지 못한 경우
           console.error("No response received from the server:", error.request);
         } else {
-          // 요청 설정 중 발생한 오류
           console.error("Error setting up the request:", error.message);
         }
-        alert("Next.js 서버에 신호를 보내는 데 실패했습니다.");
+        // alert("Next.js 서버에 신호를 보내는 데 실패했습니다.");
       });
   }
 
   const handleUpload = () => {
     const canvas = canvasRef.current;
+    setIsCapturing(true); // 전송 중 상태로 변경
+
     canvas.toBlob((blob) => {
       if (!blob) {
         console.error("캡처 블롭 생성 실패");
@@ -138,23 +130,25 @@ function Main({ inputKey }) {
         .then((res) => {
           notifySuccessToNextJs();
 
-          navigate("/"); // 사진 업로드 성공 후 정책 확인 페이지(첫 화면)로 돌아가기
           console.log("업로드 성공:", res.data);
           alert("이미지가 성공적으로 업로드되었습니다!");
+          setCaptured(false); // 업로드 후 캡처 초기화
+          setImgUrl(""); // 이미지 URL 초기화
+          setIsCapturing(false); // 전송 완료 상태로 변경
+          navigate('/home');
         })
         .catch((err) => {
           console.error("업로드 중 에러 발생:", err);
           alert("업로드에 실패했습니다. 다시 시도해주세요.");
+          setIsCapturing(false); // 전송 실패 상태로 변경
         });
-
-      setCaptured(false);
-      setImgUrl("");
     }, "image/jpeg");
   };
 
   const retakePhoto = () => {
     getWebcam((stream) => {
       videoRef.current.srcObject = stream; // 스트림을 다시 설정
+      videoRef.current.style.transform = "scaleX(-1)"; // 좌우 반전 유지
       videoRef.current.play(); // 비디오 재생
     });
     setCaptured(false); // 상태 초기화
@@ -173,13 +167,13 @@ function Main({ inputKey }) {
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
-      {!captured && (
+      {!captured && !isCapturing && (
         <div onClick={screenshot} style={styles.captureButton}>
           <div style={styles.innerCircle}></div>
         </div>
       )}
 
-      {captured && (
+      {captured && !isCapturing && (
         <div style={styles.retakeButtonContainer}>
           <button onClick={retakePhoto} style={styles.retakeButton}>
             다시 찍기
@@ -187,13 +181,20 @@ function Main({ inputKey }) {
         </div>
       )}
 
-      {captured && (
+      {captured && !isCapturing && (
         <div style={styles.uploadButtonContainer}>
           <button onClick={handleUpload} style={styles.uploadButton}>
             전송하기
           </button>
         </div>
       )}
+
+      {isCapturing && (
+        <div style={styles.uploadingContainer}>
+          <p>업로드 중...</p>
+        </div>
+      )}
+
       <div
         onClick={function() {screenshot()}}
         style={{
@@ -211,13 +212,6 @@ function Main({ inputKey }) {
           alignItems: "center",
         }}
       >
-        <div style={{
-          textAlign: "center",
-          width: "60px",
-          height: "60px",
-          border: "2px solid",
-          borderRadius: "50%",
-        }}></div>
       </div>
       <p>{rawJobName}</p>
     </div>
