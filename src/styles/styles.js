@@ -18,10 +18,10 @@ const styles = {
   /* Back button styles */
   backButton: {
     position: "absolute",
-    top: "30px",
-    left: "30px",
+    top: "15px",
+    left: "15px",
     padding: "25px 30px",
-    fontSize: "32px",
+    fontSize: "24px",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "#ffffff",
     border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -48,10 +48,10 @@ const styles = {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     backdropFilter: "blur(10px)",
     borderRadius: "20px",
-    padding: "30px",
-    margin: "20px",
-    maxWidth: "100%",
-    width: "90%",
+    padding: "15px",
+    margin: "10px",
+    maxWidth: "80%",
+    width: "60%",
     color: "#ffffff",
     boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
   },
@@ -62,7 +62,7 @@ const styles = {
     padding: "20px",
     borderRadius: "15px",
     marginTop: "10px",
-    maxHeight: "800px",
+    maxHeight: "50%",
     overflowY: "auto",
   },
 
@@ -137,20 +137,20 @@ const styles = {
 
   /* Checkbox styles */
   checkbox: {
-    width: "50px",
-    height: "50px",
+    width: "30px",
+    height: "30px",
     cursor: "pointer",
   },
 
   agreeMent: {
-    fontSize: "2rem"
+    fontSize: "1.3rem"
   },
 
   /* Agree button styles */
   agreeButton: {
     width: "100%",
-    padding: "1rem",
-    fontSize: "2rem",
+    padding: "0.5rem",
+    fontSize: "1.3rem",
     backgroundColor: "#000000",
     color: "white",
     border: "none",
