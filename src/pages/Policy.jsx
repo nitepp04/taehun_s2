@@ -12,8 +12,14 @@ function Policy() {
         뒤로가기
       </button>
 
-      <div style={styles.policy_explain_container}>
-        <h1 style={styles.title}>이용약관</h1>
+      <div style={styles.policyExplainContainer}>
+        <div style={styles.explain}>
+
+        <h1 style={{
+          fontSize: "5rem",
+          textAlign: "center",
+          margin: "0px"
+        }}>이용약관</h1>
 
         <div style={styles.policyBox}>
           <h6>
@@ -92,25 +98,25 @@ function Policy() {
           <h5>10. 기물 파손</h5>
           <h6>
             <ul>
-              메타스페이스 내 테블릿, 디스플레이 등의 전시기기 및 기물 파손 시 응당하는 대가를 지불해야 합니다. 이에 불응할 시 강경조치 들어갑니다. 아이그루스 300명에 달하는 회원들에게 질타와 손가락질을 받을 것입니다.
+              메타스페이스 내 테블릿, 디스플레이 등의 전시기기 및 기물 파손 시 응당하는 대가를 지불해야 합니다.
             </ul>
           </h6>
           <h5><strong>본 약관에 동의함으로써 사용자는 위의 조건에 따라 서비스를 이용할 것을 확인합니다.</strong></h5>
         </div>
+          </div>
       </div>
 
       <div style={styles.actionButtonsContainer}>
-        <label>
+        <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <input
             type="checkbox"
             checked={agree}
             onChange={() => setAgree(!agree)}
             style={styles.checkbox}
           />
-          <strong>
-            
+          <span style={styles.agreeMent}>
             이용약관에 동의합니다
-            </strong>
+          </span>
         </label>
         <div>
           <button

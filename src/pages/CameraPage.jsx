@@ -163,7 +163,7 @@ function Main({ inputKey }) {
       {!captured ? (
         <video ref={videoRef} autoPlay style={styles.video} />
       ) : (
-        <img src={imgUrl} alt="Captured" style={styles.capturedImage} />
+        <img src={imgUrl} alt="Captured" style={styles.video} />
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
@@ -174,15 +174,10 @@ function Main({ inputKey }) {
       )}
 
       {captured && !isCapturing && (
-        <div style={styles.retakeButtonContainer}>
+        <div>
           <button onClick={retakePhoto} style={styles.retakeButton}>
             다시 찍기
           </button>
-        </div>
-      )}
-
-      {captured && !isCapturing && (
-        <div style={styles.uploadButtonContainer}>
           <button onClick={handleUpload} style={styles.uploadButton}>
             전송하기
           </button>
@@ -195,7 +190,7 @@ function Main({ inputKey }) {
         </div>
       )}
 
-      <div
+      {/* <div
         onClick={function() {screenshot()}}
         style={{
           position: "absolute",
@@ -212,8 +207,11 @@ function Main({ inputKey }) {
           alignItems: "center",
         }}
       >
-      </div>
-      <p>{rawJobName}</p>
+      </div> */}
+      <p style={{
+        fontSize: "3rem",
+        fontWeight: "500"
+      }}>{rawJobName}</p>
     </div>
   );
 }

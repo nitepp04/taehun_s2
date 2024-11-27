@@ -15,7 +15,7 @@ const CategorySelectScreen = () => {
   return (
     <div style={styles.container}>
       <button 
-        onClick={() => navigate('policy')} 
+        onClick={() => navigate('/policy')} 
         style={styles.backButton}
       >
         뒤로가기
@@ -26,9 +26,9 @@ const CategorySelectScreen = () => {
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(280px, 1fr))',
-        gap: '2rem',
+        gap: '3rem',
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: '95%',
         padding: '2rem'
       }}>
         {JobList.map((category) => (
@@ -39,7 +39,7 @@ const CategorySelectScreen = () => {
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
               borderRadius: '20px',
-              padding: '2rem',
+              padding: '3rem',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -51,7 +51,7 @@ const CategorySelectScreen = () => {
             }}
           >
             <p style={{
-              fontSize: '1.5rem',
+              fontSize: '2.5rem',
               fontWeight: '600',
               color: '#ffffff',
               textAlign: 'center',
