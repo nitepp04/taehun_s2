@@ -97,9 +97,9 @@ const styles = {
   /* Action buttons container */
   actionButtonsContainer: {
     display: "flex",
-    flexDirection: "column", // 세로 정렬
-    alignItems: "center", // 가로 방향으로 중앙 정렬
-    justifyContent: "center", // 세로 방향으로 중앙 정렬
+    flexDirection: "row", // 수평 정렬로 변경
+    alignItems: "center", // 수직 중앙 정렬
+    justifyContent: "center", // 수평 중앙 정렬
     gap: "1rem", // 각 요소 간 간격
     marginTop: "1rem",
   },
@@ -108,8 +108,8 @@ const styles = {
   retakeButton: {
     backgroundColor: "#ff5722",
     color: "white",
-    padding: "12px 24px",
-    fontSize: "2rem",
+    padding: "8px 16px",
+    fontSize: "1.5rem",
     borderRadius: "8px",
     border: "none",
     cursor: "pointer",
@@ -123,8 +123,8 @@ const styles = {
   uploadButton: {
     backgroundColor: "#2196f3",
     color: "white",
-    padding: "12px 24px",
-    fontSize: "2rem",
+    padding: "8px 16px",
+    fontSize: "1.5rem",
     borderRadius: "8px",
     border: "none",
     cursor: "pointer",
@@ -172,8 +172,8 @@ const styles = {
     bottom: "5%", // Below screen
     left: "50%", // Center horizontally
     transform: "translateX(-50%)", // Keep centered
-    width: "140px", // Button size
-    height: "140px",
+    width: "70px", // Button size
+    height: "70px",
     backgroundColor: "#ffffff",
     borderRadius: "50%", // Circular button
     display: "flex",
@@ -184,8 +184,8 @@ const styles = {
   },
 
   innerCircle: {
-    width: "120px", // Inner circle size
-    height: "120px",
+    width: "55px", // Inner circle size
+    height: "55px",
     border: "4px solid #000000",
     borderRadius: "50%",
   },
