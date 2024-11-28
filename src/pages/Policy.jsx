@@ -16,9 +16,10 @@ function Policy() {
         <div style={styles.explain}>
 
         <h1 style={{
-          fontSize: "5rem",
+          fontSize: "3rem",
           textAlign: "center",
-          margin: "0px"
+          margin: "0px",
+          padding: "0px",
         }}>이용약관</h1>
 
         <div style={styles.policyBox}>
