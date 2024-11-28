@@ -39,6 +39,7 @@ const styles = {
     fontSize: "3rem",
     color: "#ffffff",
     textAlign: "center",
+    marginTop: "100px",
     marginBottom: "100px",
     fontWeight: '550'
   },
@@ -64,7 +65,7 @@ const styles = {
     padding: "20px",
     borderRadius: "15px",
     marginTop: "10px",
-    maxHeight: "350px",
+    maxHeight: "275px",
     overflowY: "auto",
   },
 
@@ -192,7 +193,7 @@ const styles = {
 
   video: {
     width: "50%",
-    borderRadius: "50px"
+    borderRadius: "5f0px"
   },
 
   jobListContainer: {

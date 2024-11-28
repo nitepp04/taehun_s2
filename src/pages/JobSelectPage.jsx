@@ -47,11 +47,19 @@ const JobListPage = () => {
       }}>
         <div style={styles.jobListContainer}>
 
-        <h2 style={styles.title}>{jobData.name}</h2>
+        <h2 style={{
+          fontSize: "3rem",
+          color: "#ffffff",
+          textAlign: "center",
+          marginBottom: "50px",
+          fontWeight: '550'
+        }}>{jobData.name}</h2>
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '1rem'
+            gap: '1rem',
+            margin: '0px',
+            padding: '0px'
           }}>
             <div style={styles.jobList}>
             {jobData.list.map((job, idx) => (
