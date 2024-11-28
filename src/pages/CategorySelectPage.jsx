@@ -26,10 +26,10 @@ const CategorySelectScreen = () => {
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(280px, 1fr))',
-        gap: '3rem',
+        gap: '1.3rem',
         width: '100%',
         maxWidth: '95%',
-        padding: '2rem'
+        padding: '0.5rem'
       }}>
         {JobList.map((category) => (
           <div
@@ -39,7 +39,7 @@ const CategorySelectScreen = () => {
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
               borderRadius: '20px',
-              padding: '3rem',
+              padding: '2rem',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -51,7 +51,7 @@ const CategorySelectScreen = () => {
             }}
           >
             <p style={{
-              fontSize: '2.5rem',
+              fontSize: '2rem',
               fontWeight: '600',
               color: '#ffffff',
               textAlign: 'center',

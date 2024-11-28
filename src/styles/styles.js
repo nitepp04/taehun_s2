@@ -36,7 +36,7 @@ const styles = {
 
   /* Title styles */
   title: {
-    fontSize: "7rem",
+    fontSize: "3rem",
     color: "#ffffff",
     textAlign: "center",
     marginBottom: "100px",
@@ -208,7 +208,7 @@ const styles = {
     padding: "20px",
     borderRadius: "15px",
     marginTop: "10px",
-    maxHeight: "800px",
+    maxHeight: "400px",
     overflowY: "auto",
   },
 
