@@ -1,6 +1,6 @@
 export const JobList = [
     {
-        name: "기술 엔지니어링",
+        name: "기술 및 엔지니어링",
         list: [
             "Technology Manager (기술 경영자)",
             "Innovation Strategist (혁신 전략가)",
@@ -34,6 +34,7 @@ export const JobList = [
         ]
     },
     {
+        name: "과학 및 연구",
         list: [
             "Physicist (물리학자)",
             "Chemist (화학자)",
@@ -47,7 +48,8 @@ export const JobList = [
             "Ecologist (생태학자)"
         ]
     },
-    {
+    {   
+        name: "사회 및 정책",
         list: [
             "Environmental Policy Expert (환경 정책 전문가)",
             "Climate Consultant (기후 컨설턴트)",
@@ -65,6 +67,7 @@ export const JobList = [
         ]
     },
     {
+        name : "교육 및 연구",
         list: [
             "Korean Language Teacher (국어 교사)",
             "English Language Teacher (영어 교사)",
@@ -78,6 +81,7 @@ export const JobList = [
         ]
     },
     {
+        name: "의료 및 건강 관리",
         list: [
             "Medical Doctor (의사)",
             "Research Physician (연구 의학자)",
@@ -86,6 +90,7 @@ export const JobList = [
         ]
     },
     {
+        name : "사회복지 및 상담",
         list: [
             "Psychological Counselor (심리 상담사)",
             "Child Researcher (아동 연구원)",
@@ -94,6 +99,7 @@ export const JobList = [
         ]
     },
     {
+        name: "미디어 및 문화",
         list: [
             "Journalist (기자)",
             "PR Specialist (PR 전문가)",
@@ -112,6 +118,7 @@ export const JobList = [
         ]
     },
     {
+        name : "예술 및 창작",
         list: [
             "Artist (예술가)",
             "UX/UI Designer (UX/UI 디자이너)",
@@ -123,6 +130,7 @@ export const JobList = [
         ]
     },
     {
+        name : "기업 및 경영",
         list: [
             "Management Consultant (경영 컨설턴트)",
             "Administrator (관리자)",
@@ -131,6 +139,7 @@ export const JobList = [
         ]
     },
     {
+        name : "스포츠 및 운동",
         list: [
             "Sports Trainer (스포츠 트레이너)",
             "Exercise Specialist (운동 전문가)"
